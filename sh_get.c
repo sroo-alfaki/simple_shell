@@ -10,7 +10,7 @@ char *get_input()
 	static char command[MAX_COMM];
 	char *result = NULL;
 
-	printf("Shell> ");
+	printf("Shell$ \n");
 	if (fgets(command, sizeof(command), stdin))
 	{
 		result = command;
