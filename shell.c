@@ -7,41 +7,18 @@
  */
 int main(void)
 {
-	int i;
-	extern char **environ;
-
-	environ[0] = 0;
 	while (1)
 	{
-		char *command = get_input();
+		printf("shell$ ");
+		char command[MAX_COMM];
 
-		if (command == NULL)
+		if (fgets(command, sizeof(command), stdin) == NULL)
 		{
 			printf("\n");
 			break;
 		}
-		if (strcmp(command, "exit") == 0)
-		{
-			break;
-		}
-		else if (strcmp(command, "env") == 0)
-		{
-			for (i = 0; environ[i] != NULL; i++)
-			{
-				printf("%s\n", environ[i]);
-			}
-		}
-		else
-		{
-			int num_args;
-			char **args = parse_com(command, &num_args);
-
-			if (num_args > 0)
-			{
-				execute_command(args);
-			}
-		}
+		command[strcspn(command, "\n")] = '\0';
+		execute_command(command);
 	}
-
 	return (0);
 }
