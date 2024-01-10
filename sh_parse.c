@@ -1,4 +1,5 @@
 #include "sh.h"
+#define MAX_COMM 100
 /**
  * **parse_com - creat spilt of command to argument
  * @command: the order input
@@ -8,10 +9,9 @@
 char **parse_com(char *command, int *num_args)
 {
 	static char *args[MAX_COMM];
-	*num_args = 0;
-
 	char *tok = strtok(command, " ");
-
+	
+	*num_args = 0;
 	while (tok != NULL && *num_args < MAX_COMM - 1)
 	{
 		args[*num_args] = tok;

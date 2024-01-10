@@ -1,4 +1,5 @@
 #include "sh.h"
+#define MAX_COMM 100
 /**
  * get_input- input command
  * Return: result function

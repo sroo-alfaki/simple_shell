@@ -1,4 +1,5 @@
 #include "sh.h"
+#include <unistd.h>
 
 /**
  * main - the  main shell execute
@@ -6,6 +7,10 @@
  */
 int main(void)
 {
+	int i;
+	extern char **environ;
+
+	environ[0] = 0;
 	while (1)
 	{
 		char *command = get_input();
@@ -21,9 +26,7 @@ int main(void)
 		}
 		else if (strcmp(command, "env") == 0)
 		{
-			char **environ;
-
-			for (int i = 0; environ[i] != NULL; i++)
+			for (i = 0; environ[i] != NULL; i++)
 			{
 				printf("%s\n", environ[i]);
 			}
