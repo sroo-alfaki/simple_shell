@@ -8,7 +8,6 @@
 int main(void)
 {
 	int i;
-	char **environ;
 
 	while (1)
 	{
@@ -25,6 +24,8 @@ int main(void)
 		}
 		else if (strcmp(command, "env") == 0)
 		{
+			extern char **environ;
+
 			for (i = 0; environ[i] != NULL; i++)
 			{
 				printf("%s\n", environ[i]);
