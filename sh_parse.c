@@ -10,7 +10,7 @@ char **parse_com(char *command, int *num_args)
 {
 	static char *args[MAX_COMM];
 	char *tok = strtok(command, " ");
-	
+
 	*num_args = 0;
 	while (tok != NULL && *num_args < MAX_COMM - 1)
 	{

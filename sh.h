@@ -13,5 +13,9 @@
 char *get_input();
 char **parse_com(char *command, int *num_args);
 void execute_command(char **args);
+void handle_other_command(char *command);
+void handle_env_command(void);
+void handle_exit_command(void);
+void display_prompt(void);
 
 #endif

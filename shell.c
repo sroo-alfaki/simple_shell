@@ -1,5 +1,4 @@
 #include "sh.h"
-#include <unistd.h>
 
 /**
  * main - the  main shell execute
@@ -7,39 +6,31 @@
  */
 int main(void)
 {
-	int i;
+	char command[MAX_COMM];
 
 	while (1)
 	{
-		char *command = get_input();
+		display_prompt();
 
-		if (command == NULL)
+		if (fgets(command, sizeof(command), stdin) == NULL)
 		{
 			printf("\n");
 			break;
 		}
+
+		command[strcspn(command, "\n")] = '\0';
+
 		if (strcmp(command, "exit") == 0)
 		{
-			break;
+			handle_exit_command();
 		}
 		else if (strcmp(command, "env") == 0)
 		{
-			extern char **environ;
-
-			for (i = 0; environ[i] != NULL; i++)
-			{
-				printf("%s\n", environ[i]);
-			}
+			handle_env_command();
 		}
 		else
 		{
-			int num_args;
-			char **args = parse_com(command, &num_args);
-
-			if (num_args > 0)
-			{
-				execute_command(args);
-			}
+			handle_other_command(command);
 		}
 	}
 
