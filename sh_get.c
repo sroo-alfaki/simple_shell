@@ -1,5 +1,5 @@
 #include "sh.h"
-
+#define MAX_COMMAND_LENGTH 100
 /**
  * get_input- input command
  * Return: result function
