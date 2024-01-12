@@ -1,5 +1,5 @@
 #include "sh.h"
-#define MAX_COMM 100
+
 /**
  * **parse_com - creat spilt of command to argument
  * @command: the order input
